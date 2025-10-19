@@ -16,6 +16,9 @@ async function ImageToPDF(imgObjURL){
      return pdfBytes;
 }
 
+function Convert(){
+     
+}
 function DownloadFile(){
      browser.downloads.download({
      url: downloadUrl,

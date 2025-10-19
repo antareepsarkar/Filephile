@@ -10,4 +10,12 @@ async function pngToPdf(imgObjURL){
      return pdfBytes;
 }
 
- 
+async function jpgToPdf(imgObjURL){
+     const imgBytes = await imgObjURL.arrayBuffer();
+     const pdfDoc = await PDFDocument.create();
+     const jpgImage = await pdfDoc.embedJpg(imgBytes);
+     const page = pdfDoc.addPage();
+     page.drawImage(jpgImage);
+     const pdfBytes = await pdfDoc.save();
+     return pdfBytes;     
+}  

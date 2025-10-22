@@ -1,21 +1,21 @@
-import { PDFDocument } from 'pdf-lib'
+import { PDFDocument } from 'pdf-lib';
 
-async function pngToPdf(imgObjURL){
-     const imgBytes = await imgObjURL.arrayBuffer();
+async function pngToPdf(base64Img){
      const pdfDoc = await PDFDocument.create();
-     const pngImage = await pdfDoc.embedPng(imgBytes);
+     const pngImage = await pdfDoc.embedPng(base64Img);
      const page = pdfDoc.addPage();
      page.drawImage(pngImage);
-     const pdfBytes = await pdfDoc.save();
-     return pdfBytes;
+     const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+     return pdfDataUri;
 }
 
-async function jpgToPdf(imgObjURL){
-     const imgBytes = await imgObjURL.arrayBuffer();
+async function jpgToPdf(base64Img){
      const pdfDoc = await PDFDocument.create();
-     const jpgImage = await pdfDoc.embedJpg(imgBytes);
+     const jpgImage = await pdfDoc.embedJpg(base64Img);
      const page = pdfDoc.addPage();
      page.drawImage(jpgImage);
-     const pdfBytes = await pdfDoc.save();
-     return pdfBytes;     
+     const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+     return pdfDataUri;     
 }  
+
+export {pngToPdf, jpgToPdf};

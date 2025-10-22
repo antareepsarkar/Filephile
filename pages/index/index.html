@@ -7,13 +7,13 @@
 </head>
 <body id="body">
      <div>
-          <input type="file" name="file_input" id="file_inp"/>
+          <input type="file" name="file-input" id="file-input"/>
           <button onclick="show()">Show</button> 
-          <select id="convert_to">
+          <select id="convert-to">
                <option>pdf</option>
           </select>
-          <button onclick="convert()">Convert</button>
-          <a href="../after-convert/after-convert.html"><button onclick="afterConvert()">after convert</button></a>
+          <a><button onclick="afterConvert()">Convert</button></a>
+          <p id="detected-ext"></p>
      </div>
 </body>
 <script src="./index.js" type="text/javascript"></script>
